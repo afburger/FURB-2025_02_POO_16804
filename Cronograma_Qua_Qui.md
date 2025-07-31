@@ -22,10 +22,10 @@
 - Tipo referência
 - Memória stack e heap
 - Encapsulamento
+- Lançamento de Exceções
 
 ## Aula 6 - 14/08/2025 (Quinta-feira)
-- Lançamento de Exceções
-- Aplicação de lista de exercícios L02
+- Aplicação de lista de exercícios L02 (Atividade extra-classe)
 
 ## Aula 7 - 20/08/2025 (Quarta-feira)
 - Correção lista L02
