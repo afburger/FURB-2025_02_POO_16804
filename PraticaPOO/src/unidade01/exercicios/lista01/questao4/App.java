@@ -1,4 +1,4 @@
-package unidade01.exercicios.lista01.questao04;
+package unidade01.exercicios.lista01.questao4;
 
 import java.util.Scanner;
 

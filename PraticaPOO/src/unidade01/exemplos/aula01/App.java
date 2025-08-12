@@ -1,4 +1,4 @@
-package unidade01.exemplos;
+package unidade01.exemplos.aula01;
 
 public class App {
 
