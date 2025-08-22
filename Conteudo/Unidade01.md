@@ -3,6 +3,7 @@
 ## 📚 Sumário
 - [Aula 01 – Paradigmas, POO, Objetos e Memória](#aula-01--paradigmas-poo-classes-objetos-e-memória)
 - [Aula 06 – Diagrama de Objeto UML, Escopo de Variáveis, Encapsulamento](#aula-06--diagrama-de-objeto-uml-escopo-de-variáveis-encapsulamento)
+- [Aula 07 – Membros de classe, Sobrecarga de métodos, Construtores](#aula-07--membros-de-classe-sobrecarga-de-métodos-construtores)
 
 #### Aula 01 – Paradigmas, POO, Classes, Objetos e Memória
 30/07/2025
@@ -244,3 +245,150 @@ public class ContaBancaria {
 - **public** → acesso liberado para todos.  
 - **protected** → acesso para classes do mesmo pacote ou herdeiras.  
 - **default** (sem modificador) → acesso apenas dentro do mesmo pacote.
+
+#### Aula 07 – Membros de classe, Sobrecarga de métodos, Construtores
+21/08/2025
+
+## 🆕 Membros de Classe
+
+Em Java, os membros de uma classe podem ser:
+
+1. **Atributos (variáveis de instância ou de classe)**
+   - Guardam o estado dos objetos.
+   - Podem ser **instância** (cada objeto tem sua cópia) ou **estáticos** (compartilhados por todos os objetos da classe).
+
+2. **Métodos**
+   - Definem o comportamento da classe.
+   - Podem acessar atributos e interagir com outros métodos.
+
+3. **Membros estáticos (`static`)**
+   - Pertencem à classe e não ao objeto.
+   - Acessados diretamente pelo nome da classe.
+```java
+   public class Calculadora {
+       public static double PI = 3.14159;
+
+       public static int somar(int a, int b) {
+           return a + b;
+       }
+   }
+
+   // Uso:
+   double x = Calculadora.PI;
+   int resultado = Calculadora.somar(5, 3);
+```
+
+📌 Resumo:
+
+Instância → cada objeto tem sua cópia.
+
+Estático → pertence à classe e é compartilhado.
+
+## 🆕 Sobrecarga de Métodos
+
+A sobrecarga permite ter vários métodos com o mesmo nome, mas assinaturas diferentes (quantidade ou tipo de parâmetros).
+
+Exemplo:
+```java
+public class Impressora {
+    public void imprimir(String texto) {
+        System.out.println(texto);
+    }
+
+    public void imprimir(int numero) {
+        System.out.println(numero);
+    }
+
+    public void imprimir(double numero) {
+        System.out.println(numero);
+    }
+}
+```
+```java
+    // Uso
+    Impressora imp = new Impressora();
+    imp.imprimir("Olá");
+    imp.imprimir(123);
+    imp.imprimir(45.6);
+```  
+
+📌 Resumo:
+
+O compilador escolhe o método correto de acordo com os parâmetros.
+
+Torna o código mais flexível e legível.
+
+## 🆕 Construtores
+
+O construtor é um método especial usado para inicializar objetos.
+
+Tem o mesmo nome da classe.
+
+Não tem tipo de retorno (nem void).
+
+Executado automaticamente quando usamos new.
+
+Exemplo simples:
+
+```java
+public class Pessoa {
+    private String nome;
+    private int idade;
+
+    // Construtor
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+}
+```
+```java
+    // Uso
+    Pessoa p1 = new Pessoa("Ana", 25);
+    System.out.println(p1.getNome());
+```
+
+#### Sobrecarga de Construtores
+
+Assim como métodos, os construtores podem ser sobrecarregados:
+
+```java
+    public class Retangulo {
+    private int largura;
+    private int altura;
+
+    // Construtor 1
+    public Retangulo(int largura, int altura) {
+        this.largura = largura;
+        this.altura = altura;
+    }
+
+    // Construtor 2
+    public Retangulo(int lado) {
+        this.largura = lado;
+        this.altura = lado;
+    }
+}
+```
+
+```java
+    // Uso
+    Retangulo r1 = new Retangulo(10, 5);
+    Retangulo r2 = new Retangulo(7); // quadrado
+```
+
+📌 Resumo:
+
+Construtores inicializam objetos.
+
+Podem ser sobrecarregados para oferecer flexibilidade.
+
+O compilador fornece um construtor padrão sem parâmetros caso nenhum seja definido.
