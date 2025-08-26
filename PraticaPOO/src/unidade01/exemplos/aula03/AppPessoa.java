@@ -1,4 +1,4 @@
-package unidade01.exemplos.aula06;
+package unidade01.exemplos.aula03;
 
 public class AppPessoa {
 
