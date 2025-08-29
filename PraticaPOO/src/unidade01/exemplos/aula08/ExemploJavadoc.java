@@ -13,12 +13,12 @@ public class ExemploJavadoc {
 	/**
 	 * Soma dois números inteiros.
 	 *
-	 * @param a primeiro número
-	 * @param b segundo número
-	 * @return a soma de a e b
+	 * @param primeiroValor primeiro número
+	 * @param segundoValor segundo número
+	 * @return um int com a soma de a e b
 	 */
-	public int somar(int a, int b) {
-		return a + b;
+	public int somar(int primeiroValor, int segundoValor) {
+		return primeiroValor + segundoValor;
 	}
 
 	/**
