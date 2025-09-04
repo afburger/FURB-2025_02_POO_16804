@@ -13,4 +13,5 @@ Para se localizar em relação aos dias de aula e o conteúdo que está sendo pa
 Também tem a pasta ProjetoPratico que contém códigos em Java dos exemplos e a solução para os exercícios propostos em aula.
 
 ### Conteúdo
-[Unidade 01](Conteudo/Unidade01.md)
+- [Unidade 01](Conteudo/Unidade01.md)
+- [Unidade 02](Conteudo/Unidade02.md)
