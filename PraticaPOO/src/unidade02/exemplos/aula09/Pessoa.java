@@ -1,4 +1,4 @@
-package unidade01.exemplos.aula09;
+package unidade02.exemplos.aula09;
 
 public class Pessoa {
 
