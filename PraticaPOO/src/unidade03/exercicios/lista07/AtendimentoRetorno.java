@@ -23,6 +23,11 @@ public class AtendimentoRetorno extends Atendimento {
 		super(data, descricao, animal, veterinario);
 	}
 
+	public AtendimentoRetorno(LocalDate data, String descricao, Animal animal, Veterinario veterinario, Atendimento atendimentoAnterior) {
+		super(data, descricao, animal, veterinario);
+		this.atendimentoAnterior = atendimentoAnterior;
+	}
+
 	public void setAtendimentoAnterior(Atendimento atendimentoAnterior) {
 		this.atendimentoAnterior = atendimentoAnterior;
 	}

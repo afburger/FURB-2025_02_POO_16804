@@ -23,6 +23,11 @@ public class AtendimentoEmergencia extends Atendimento {
 		super(data, descricao, animal, veterinario);
 	}
 
+	public AtendimentoEmergencia(LocalDate data, String descricao, Animal animal, Veterinario veterinario, int nivelUrgencia) {
+		super(data, descricao, animal, veterinario);
+		this.nivelUrgencia = nivelUrgencia;
+	}
+
 	public void setNivelUrgencia(int nivelUrgencia) {
 		this.nivelUrgencia = nivelUrgencia;
 	}
