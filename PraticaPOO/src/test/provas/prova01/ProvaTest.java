@@ -1,3 +1,5 @@
+package provas.prova01;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import provas.prova01.correcao.Consulta;
