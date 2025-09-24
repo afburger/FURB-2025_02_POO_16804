@@ -1,4 +1,4 @@
-package provas.prova01;
+package provas.prova01.correcao;
 
 public class Endereco {
 

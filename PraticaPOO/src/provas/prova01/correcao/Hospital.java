@@ -1,4 +1,4 @@
-package provas.prova01;
+package provas.prova01.correcao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
