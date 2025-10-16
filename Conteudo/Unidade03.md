@@ -3,7 +3,7 @@
 ## 📚 Sumário
 - [Aula 14 – Herança](#aula-14--herança)
 - [Aula 15 – Generalização e Classes Abstratas](#aula-15--generalização-e-classes-abstratas)
-
+- [Aula 16 – Polimorfismo e Interfaces](#aula-16--polimorfismo-e-interfaces)
 
 #### Aula 14 – Herança
 18/09/2025
@@ -182,7 +182,7 @@ class ContaEspecial extends ContaBancaria {
 ```
 ---
 #### Aula 15 – Generalização e Classes Abstratas
-24/10/2025
+24/09/2025
 
 ### Generalização
 - Processo de **identificar atributos e comportamentos comuns** entre várias classes e extrair para uma **superclasse mais genérica**.
@@ -321,3 +321,179 @@ final class UtilBanco {
 // Não é possível estender UtilBanco
 // class OutraClasse extends UtilBanco { } // ERRO
 ```
+#### Aula 16 – Polimorfismo e Interfaces
+08/10/2025
+
+
+## Polimorfismo
+
+Polimorfismo significa “muitas formas”.
+Na Programação Orientada a Objetos, ele permite que uma variável de um tipo genérico (geralmente uma superclasse ou interface) possa referenciar objetos de classes diferentes que compartilham uma relação de herança ou implementação.
+
+Em outras palavras:
+
+O polimorfismo ocorre quando uma mesma variável pode assumir várias formas de objeto, desde que compatíveis com seu tipo.
+
+Exemplo prático: Pessoa, Pessoa Física e Pessoa Jurídica
+
+```java
+abstract class Pessoa {
+    protected String nome;
+
+    public Pessoa(String nome) {
+        this.nome = nome;
+    }
+
+    public abstract void exibirDocumento();
+}
+
+class PessoaFisica extends Pessoa {
+    private String cpf;
+
+    public PessoaFisica(String nome, String cpf) {
+        super(nome);
+        this.cpf = cpf;
+    }
+
+    @Override
+    public void exibirDocumento() {
+        System.out.println("CPF: " + cpf);
+    }
+}
+
+class PessoaJuridica extends Pessoa {
+    private String cnpj;
+
+    public PessoaJuridica(String nome, String cnpj) {
+        super(nome);
+        this.cnpj = cnpj;
+    }
+
+    @Override
+    public void exibirDocumento() {
+        System.out.println("CNPJ: " + cnpj);
+    }
+}
+```
+
+#### O que acontece aqui
+
+Podemos criar uma variável do tipo Pessoa (a classe mais genérica) e atribuir a ela qualquer objeto de uma classe filha:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Pessoa p1 = new PessoaFisica("André", "123.456.789-00");
+        Pessoa p2 = new PessoaJuridica("Tech Solutions", "12.345.678/0001-90");
+
+        p1.exibirDocumento(); // CPF: 123.456.789-00
+        p2.exibirDocumento(); // CNPJ: 12.345.678/0001-90
+    }
+}
+```
+
+#### Aqui está o polimorfismo em ação:
+A variável Pessoa pode representar tanto uma Pessoa Física quanto uma Pessoa Jurídica.
+O método chamado (exibirDocumento()) é o mesmo, mas o comportamento muda conforme o tipo do objeto que ela está referenciando.
+
+**Benefício do Polimorfismo**
+
+Com o polimorfismo, você pode:
+
+Trabalhar com coleções genéricas, sem se preocupar com o tipo concreto de cada objeto.
+
+Adicionar novas classes sem alterar o código que consome a abstração.
+
+Reduzir acoplamento e aumentar a flexibilidade do sistema.
+
+Exemplo:
+
+```java
+List<Pessoa> pessoas = new ArrayList<>();
+pessoas.add(new PessoaFisica("Ana", "111.222.333-44"));
+pessoas.add(new PessoaJuridica("Pública Tecnologia", "09.876.543/0001-11"));
+
+for (Pessoa p : pessoas) {
+    p.exibirDocumento(); // Polimorfismo em loop
+}
+```
+
+## Interfaces
+
+Uma interface é uma forma de contrato.
+Ela define o que uma classe deve fazer, mas não como.
+Serve para garantir que classes diferentes tenham um conjunto mínimo de comportamentos em comum.
+
+Exemplo:
+```java
+interface Autenticavel {
+    boolean autenticar(String senha);
+}
+```
+
+Agora qualquer classe que implemente essa interface deve obrigatoriamente definir o método autenticar.
+
+```java
+class Usuario implements Autenticavel {
+    private String senha = "1234";
+
+    @Override
+    public boolean autenticar(String senha) {
+        return this.senha.equals(senha);
+    }
+}
+```
+
+Podemos usar o polimorfismo de interface da mesma forma:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Autenticavel user = new Usuario();
+        System.out.println(user.autenticar("1234")); // true
+    }
+}
+```
+
+#### Polimorfismo com Interfaces
+
+Assim como acontece com classes, uma variável do tipo de uma interface pode referenciar qualquer objeto que a implemente.
+
+Isso é extremamente útil para criar código desacoplado — você pode trocar implementações sem mexer no código que consome a interface.
+
+Exemplo prático:
+
+```java
+interface Pagamento {
+    void realizarPagamento(double valor);
+}
+
+class PagamentoPix implements Pagamento {
+    public void realizarPagamento(double valor) {
+        System.out.println("Pagamento via PIX de R$ " + valor);
+    }
+}
+
+class PagamentoCartao implements Pagamento {
+    public void realizarPagamento(double valor) {
+        System.out.println("Pagamento via Cartão de R$ " + valor);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pagamento pagamento = new PagamentoPix();
+        pagamento.realizarPagamento(100);
+
+        pagamento = new PagamentoCartao();
+        pagamento.realizarPagamento(250);
+    }
+}
+```
+
+#### Resumo
+| Conceito | O que é | Exemplo de uso |
+| -------- | ------- | -------------- |
+| **Polimorfismo de classes**| Uma variável de uma classe pai pode referenciar objetos de classes filhas| `Pessoa p = new PessoaFisica()`|
+| **Polimorfismo de interfaces** | Uma variável do tipo interface pode referenciar objetos de qualquer classe que a implemente | `Autenticavel a = new Usuario()`|
+| **Vantagens**| Flexibilidade, reutilização, baixo acoplamento | Listas genéricas, serviços, abstrações |
