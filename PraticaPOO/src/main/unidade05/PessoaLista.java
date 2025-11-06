@@ -1,7 +1,5 @@
 package unidade05;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 
 public class PessoaLista implements Comparable<PessoaLista> {
