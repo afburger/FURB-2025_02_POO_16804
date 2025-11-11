@@ -13,9 +13,7 @@ public class AplicacaoCadastroEstudantes {
 
 	public static void main(String[] args) {
 		// Inicia a aplicação na thread de eventos do Swing
-		SwingUtilities.invokeLater(() -> {
-			JanelaCadastroEstudantes janela = new JanelaCadastroEstudantes();
-			janela.setVisible(true);
-		});
+		JanelaCadastroEstudantes janela = new JanelaCadastroEstudantes();
+		janela.setVisible(true);
 	}
 }
